@@ -20,6 +20,30 @@ describe('Thermostat', function(){
     });
   });
 
+  describe('Reset button', function(){
+    it('Should reset the temperate to 20', function(){
+      thermostat.increase(5);
+      thermostat.resetTemp();
+      expect(thermostat.temperature).toEqual(20);
+    });
+  });
+
+  describe('Energy usage indicator', function(){
+    it('should be low-energy when temperature < 18', function(){
+      thermostat.decrease(3);
+      expect(thermostat.energyUsage()).toEqual('low-energy');
+    });
+    it('should be medium-energy when 18 < temperature < 25', function(){
+      thermostat.increase(1);
+      expect(thermostat.energyUsage()).toEqual('medium-energy');
+    });
+    it('should be high-energy when temperature > 25', function(){
+      thermostat.switchMode();
+      thermostat.increase(7);
+      expect(thermostat.energyUsage()).toEqual('high-energy');
+    });
+  });
+
   describe('Temperature changes',function(){
     it('Should increase temperature by one', function(){
       thermostat.increase();
