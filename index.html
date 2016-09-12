@@ -2,6 +2,8 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="src/Thermostat.js"></script>
     <title></title>
   </head>
   <body>
@@ -9,8 +11,8 @@
     <button type='button' id='decrease'> Decrease Temp</button>
     <button type='button' id='powerMode'> Power toggle</button>
     <button type='button' id='reset'> Reset </button>
-
-    <progress value='20' max='40'></progress>
-    <span id='powerMode'> Off </span>
+    <div id='currentTemp'>temp</div>
+    <progress value='20' max='40' id='bar'></progress>
+    <span id='powerModeDisplay'> Off </span>
   </body>
 </html>

@@ -41,3 +41,32 @@ Thermostat.prototype.energyUsage = function () {
     return 'high-energy';
   }
 };
+
+
+$(document).ready(function(){
+      thermostat = new Thermostat();
+      document.getElementById("currentTemp").innerHTML = thermostat.temperature;
+      document.getElementById("powerModeDisplay").innerHTML = thermostat.isPowerSaving;
+
+      document.getElementById('increase').onclick = function(){
+        thermostat.increase();
+      };
+
+      document.getElementById('decrease').onclick = function(){
+        thermostat.decrease();
+      };
+
+      document.getElementById('powerMode').onclick = function(){
+        thermostat.switchMode();
+      };
+
+      document.getElementById('reset').onclick = function(){
+        thermostat.resetTemp();
+      };
+});
+
+$(document).click(function(){
+  document.getElementById("currentTemp").innerHTML = thermostat.temperature;
+  document.getElementById("bar").value = thermostat.temperature;
+  document.getElementById("powerModeDisplay").innerHTML = thermostat.isPowerSaving;
+});
