@@ -1,6 +1,8 @@
 
+DEFAULT_TEMPERATURE = 20;
+
 var Thermostat = function Thermostat(){"use strict";
-  this._temperature = 20;
+  this._temperature = DEFAULT_TEMPERATURE;
   this._minTemperature = 10;
   this._powerSaving = true;
   this._powerSaveMax = 25;
@@ -12,21 +14,26 @@ Thermostat.prototype ={
   return this._temperature;
 },
   increaseTemperature: function () {
-    if (this._powerSaving === true){
-      if (this._temperature >= this._powerSaveMax){
-        throw new Error("temperature cannot go below minimum.");
+      if(this._temperature >= this.currentPower()){
+        throw new Error("temperature cannot go above max limit.");
       } else {
-        this._temperature -= 1;
-      }} else {
-      if (this._temperature >= this._maxTemperature){
-        throw new Error("temperature cannot go below minimum.");
-    } else {
-      this._temperature -= 1;
-}}},
+        this._temperature += 1;
+}},
   decreaseTemperature: function () {
     if (this._temperature <= this._minTemperature){
       throw new Error("temperature cannot go below minimum.");
     } else {
       this._temperature -= 1;
-    }}
-}};
+}},
+  resetTemperature: function() {
+    return this._temperature = DEFAULT_TEMPERATURE;
+  }
+};
+
+Thermostat.prototype.currentPower = function () {
+  if(this._powerSaving === true){
+    return this._powerSaveMax;
+  } else {
+    return this._maxTemperature;
+  }
+};

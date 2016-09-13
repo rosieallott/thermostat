@@ -12,7 +12,7 @@ describe("feature test", function(){ "use strict";
     expect(thermostat.showTemperature()).toEqual(20);
   });
 
-  it("can be incrased in temperature", function(){
+  it("can be increased in temperature", function(){
     thermostat.increaseTemperature();
     expect(thermostat.showTemperature()).toEqual(21);
   });
@@ -27,8 +27,19 @@ describe("feature test", function(){ "use strict";
     expect(function(){thermostat.decreaseTemperature();}).toThrowError("temperature cannot go below minimum.");
   });
 
-  it("cannot be increased in temperature past power save(turned on) max", function(){
+  it("cannot be increased in temperature past powersave(turned on) max", function(){
     thermostat._temperature = 25;
-    expect(function(){thermostat.increaseTemperature();}).toThrowError("powersave on - temperature cannot go above 25.");
+    expect(function(){thermostat.increaseTemperature();}).toThrowError("temperature cannot go above max limit.");
+  });
+
+  it("cannot be increased in temperature past powersave(turned off) max", function(){
+    thermostat._temperature = 32;
+    expect(function(){thermostat.increaseTemperature();}).toThrowError("temperature cannot go above max limit.");
+  });
+
+  it("can change temperature back to default on reset", function(){
+    thermostat._temperature = 32;
+    thermostat.resetTemperature();
+    expect(thermostat.showTemperature()).toEqual(20);
   });
 });
