@@ -3,7 +3,6 @@
 function Thermostat() {
   this.temperature = 20;
   this.powersave = true;
-
   this.MAX = {true: 25, false: 32};
 }
 
@@ -23,5 +22,22 @@ Thermostat.prototype = {
     else {
       this.temperature -= amount;
     }
+  },
+  switchPowerMode: function(){
+    this.powersave = !this.powersave
+  },
+  resetTemp: function(){
+    this.temperature = 20
+  },
+  displayEnergyUsage: function() {
+    if(this.temperature < (18)) {
+      return 'low-energy'
+    }
+    else if(this.temperature < (25)) {
+      return 'medium-energy'
+    }
+    else {
+      return 'high-energy'
+    }
   }
-}
+};
