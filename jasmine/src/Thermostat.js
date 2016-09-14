@@ -41,6 +41,10 @@ Thermostat.prototype = {
     }
   }
 };
-//
-var thermostat = new Thermostat();
-// thermostat.temperature;
+
+$( document ).ready(function() {
+
+  var thermostat = new Thermostat();
+  document.getElementById("temperature").innerHTML = thermostat.temperature;
+
+});
