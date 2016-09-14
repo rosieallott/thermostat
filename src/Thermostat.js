@@ -70,5 +70,11 @@ $(document).ready(function(){
 
   function updateColour(){
     $('#temperature').attr('class',thermostat.displayEnergyUsage());
-  }
+  };
+
+  var api = 'http://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=c4af8f391b8e7ff8a34f4aaa15a50f4e';
+  $.getJSON(api, function(data){
+    console.log(data.main.temp);
+  $('#weather').text(data.main.temp);
+  });
 });
