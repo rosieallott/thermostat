@@ -11,6 +11,8 @@ var Thermostat = function Thermostat(){"use strict";
 
 Thermostat.prototype ={
   showTemperature: function () {
+
+  window.getElementById("demo").innerHTML = showTemperature();
   return this._temperature;
 },
   increaseTemperature: function () {
@@ -35,6 +37,15 @@ Thermostat.prototype ={
   } else {
     return this._maxTemperature;
   }},
+
+  switchPowerSaving: function(){
+      if(this._powerSaving === true){
+        return this._powerSaving === false;
+      } else {
+        return this._powerSaving === true;
+      }
+  },
+
   displayEfficiency : function() {
   if(this._temperature < 18) {
     return "Green";
