@@ -41,3 +41,9 @@ Thermostat.prototype = {
     }
   }
 };
+
+$(document).ready(function(){
+  var thermostat = new Thermostat();
+  document.getElementById('temperature').innerHTML = thermostat.temperature;
+  // $('#temperature').text(thermostat.temperature);
+});
