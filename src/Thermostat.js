@@ -41,6 +41,3 @@ Thermostat.prototype = {
     }
   }
 };
-//
-var thermostat = new Thermostat();
-// thermostat.temperature;
