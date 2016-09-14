@@ -1,0 +1,16 @@
+body {
+
+background-color: lightyellow;
+
+}
+.low-energy {
+  color: green;
+}
+
+.medium-energy {
+  color: orange;
+}
+
+.high-energy {
+  color: red;
+}

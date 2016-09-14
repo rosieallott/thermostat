@@ -46,21 +46,29 @@ $(document).ready(function(){
   var thermostat = new Thermostat();
   $('#temperature').text(thermostat.temperature);
   $('#powersave').text(thermostat.powersave);
+  updateColour();
 
   $('#temperature-increase').on('click',function(){
     thermostat.increase();
     $('#temperature').text(thermostat.temperature);
+    updateColour();
   });
   $('#temperature-decrease').on('click',function(){
     thermostat.decrease();
     $('#temperature').text(thermostat.temperature);
+    updateColour();
   });
   $('#temperature-reset').on('click',function(){
     thermostat.resetTemp();
     $('#temperature').text(thermostat.temperature);
+    updateColour();
   });
   $('#switchpowersaving-off').on('click',function(){
     thermostat.switchPowerMode();
     $('#powersave').text(thermostat.powersave);
   });
+
+  function updateColour(){
+    $('#temperature').attr('class',thermostat.displayEnergyUsage());
+  }
 });
