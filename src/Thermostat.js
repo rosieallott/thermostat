@@ -44,6 +44,23 @@ Thermostat.prototype = {
 
 $(document).ready(function(){
   var thermostat = new Thermostat();
-  document.getElementById('temperature').innerHTML = thermostat.temperature;
-  // $('#temperature').text(thermostat.temperature);
+  $('#temperature').text(thermostat.temperature);
+  $('#powersave').text(thermostat.powersave);
+
+  $('#temperature-increase').on('click',function(){
+    thermostat.increase();
+    $('#temperature').text(thermostat.temperature);
+  });
+  $('#temperature-decrease').on('click',function(){
+    thermostat.decrease();
+    $('#temperature').text(thermostat.temperature);
+  });
+  $('#temperature-reset').on('click',function(){
+    thermostat.resetTemp();
+    $('#temperature').text(thermostat.temperature);
+  });
+  $('#switchpowersaving-off').on('click',function(){
+    thermostat.switchPowerMode();
+    $('#powersave').text(thermostat.powersave);
+  });
 });
