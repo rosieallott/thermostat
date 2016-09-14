@@ -27,13 +27,20 @@ Thermostat.prototype ={
 }},
   resetTemperature: function() {
     return this._temperature = DEFAULT_TEMPERATURE;
-  }
-};
+  },
 
-Thermostat.prototype.currentPower = function () {
+  currentPower : function() {
   if(this._powerSaving === true){
     return this._powerSaveMax;
   } else {
     return this._maxTemperature;
-  }
+  }},
+  displayEfficiency : function() {
+  if(this._temperature < 18) {
+    return "Green";
+  }else if (this._temperature < 25) {
+    return "Yellow";
+  }else {
+    return "Red";
+  }}
 };

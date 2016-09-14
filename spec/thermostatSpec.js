@@ -42,4 +42,17 @@ describe("feature test", function(){ "use strict";
     thermostat.resetTemperature();
     expect(thermostat.showTemperature()).toEqual(20);
   });
+
+  it('should display green when temperature is below 18 degrees', function() {
+    thermostat._temperature = 17;
+    expect(thermostat.displayEfficiency()).toEqual("Green");
+  });
+  it('should display yellow when temperature is between 18 & 25 degrees', function() {
+    thermostat._temperature = 23;
+    expect(thermostat.displayEfficiency()).toEqual("Yellow");
+  });
+  it('should display red when temperature is above 25 degrees', function() {
+    thermostat._temperature = 28;
+    expect(thermostat.displayEfficiency()).toEqual("Red");
+  });
 });
