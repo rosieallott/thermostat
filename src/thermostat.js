@@ -17,7 +17,7 @@ Thermostat.prototype ={
     if(this._temperature >= this.currentPower()){
       throw new Error("temperature cannot go above max limit.");
     } else {
-      this._temperature += 1;
+      return this._temperature += 1;
 
     }},
     decreaseTemperature: function () {
