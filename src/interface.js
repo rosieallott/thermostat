@@ -4,12 +4,9 @@ $(document).ready(function() {
   updateTemperature();
   $('#powersavingstatus').text(thermostat._powerSaving);
 
-  var city = $('#cityselect :selected').text();
-  console.log(city);
-  var url = "http://api.openweathermap.org/data/2.5/weather?q="+city+"&appid=b15f5f9da7b49eb2b3f5c00b679f6db9"
-  console.log(url);
-
   $('#cityselect').change(function(){
+    var city = $('#cityselect').val();
+    var url = "http://api.openweathermap.org/data/2.5/weather?q="+city+"&appid=b15f5f9da7b49eb2b3f5c00b679f6db9"
     $.get(url, function(data) {
       $('#current').text(Math.round(data.main.temp - 273));
     });
