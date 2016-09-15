@@ -53,3 +53,7 @@ Thermostat.prototype ={
               return "Red";
             }}
           };
+
+          function showValue(newValue) {
+            document.getElementById('rosie').innerHTML = newValue;
+          }

@@ -18,7 +18,7 @@ $(document).ready(function() {
     updateTemperature();
   });
 
-  $('#decrease').click(function() { getElementById('#decrease')
+  $('#decrease').click(function() {
     thermostat.decreaseTemperature();
     updateTemperature();
   });
