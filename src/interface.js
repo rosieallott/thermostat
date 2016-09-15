@@ -7,13 +7,14 @@ $(document).ready(function() {
   var city = $('#cityselect :selected').text();
   console.log(city);
   var url = "http://api.openweathermap.org/data/2.5/weather?q="+city+"&appid=b15f5f9da7b49eb2b3f5c00b679f6db9"
-  $('#city').text(city);
+  console.log(url);
 
-  $.get(url, function(data) {
-    console.log(data)
-    $("#current").text(Math.round(data.main.temp - 273));
+  $('#cityselect').change(function(){
+    $.get(url, function(data) {
+      $('#current').text(Math.round(data.main.temp - 273));
+    });
+    $('#city').text(city);
   });
-
 
   $('#increase').click(function() {
     thermostat.increaseTemperature();
