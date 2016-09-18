@@ -1,34 +1,42 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <title>Thermostat</title>
-  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-  <script src="interface.js"></script>
-  <link rel="stylesheet" type="text/css" href="color.css">
-<div id="header_div">
-  <h1>Welcome to the most advanced Thermostat of the Cosmos!</h1>
-  <h2>You can easily use it with the below buttons</h2></div>
-</head>
-<body>
-  <h2 id="temperature"></h2>
-    <button id="increase">Increase Temperature</button>
-    <button id="decrease">Decrease Temperature</button>
-    <button id="reset">Reset Temperature</button>
-  <h2>Power saving status is : </h2><h2 id="powersavingstatus"></h2>
-    <button id="powersaving">Power Saving</button>
+  <head>
+      <title>Thermostat</title>
+      <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+      <script src="interface.js"></script>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.3/css/bootstrap.min.css" integrity="sha384-MIwDKRSSImVFAZCVLtU0LMDdON6KVCrZHyVQQj6e8wIEJkW4tvwqXrbMIya1vriY" crossorigin="anonymous">
+      <link rel="stylesheet" href="background.css" />
+    <div class="jumbotron" style="padding-top: 30px; padding-bottom: 30px; text-align: center; color: darkslategray">
+      <h2 class="display-5">Welcome to the world's most advanced thermostat!</h2>
+      <p class="lead">You can easily use your thermostat with the below buttons </p>
+      <div class="btn-group" role="group" aria-label="...">
+        <button type="button"class="btn btn-default" role='button' id="powersaving">Toggle Power Saving</button>
+        <button type="button"class="btn btn-default" role='button' id="reset">Reset Temperature</button>
+      </div>
+    </div>
+  </head>
+<div class="bg">
+  <body class="text-muted"><a style="color: black"</a>
 
-    <input type="range" id="slider" min="10" value="20" max="32" step="1" onchange="showValue(this.value)">
-<h2 id="rosie"></h2>
-  <h2>Current Weather in </h2>
-  <h2><p id="citydisplay"></p></h2>
-  <h1 id="current"></h1>
-  <select id="cityselect">
-    <option value="">Choose your city</option>
-    <option value="Istanbul">Istanbul</option>
-    <option value="Antalya">Antalya</option>
-    <option value="London">London</option>
-  </select>
-  <script src="thermostat.js"></script>
+    <div style="padding-top: 30px; padding-bottom: 30px; text-align: center">
+    <h2>Current temperature is: <span id="temperature"></span></h2>
+    <div class="progress">
+      <input type="range" id="slider" min="10" value="20" max="32" step="1">
+    </div>
+    <h2>Power saving status is: <span id="powersavingstatus"></span></h2>
+    </div>
 
-</body>
+    <div style="padding-top: 30px; padding-bottom: 30px; text-align: center; color: black">
+      <h2>Current Weather in <span id="citydisplay"></span>: <span id="current"></span></h2>
+      <select id="cityselect">
+        <option value="">Choose your city</option>
+        <option value="Istanbul">Istanbul</option>
+        <option value="Antalya">Antalya</option>
+        <option value="Melbourne">Melbourne</option>
+        <option value="London">London</option>
+      </select>
+    </div>
+    <script src="thermostat.js"></script>
+  </body>
+</div>
 </html>

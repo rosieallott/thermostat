@@ -1,8 +1,14 @@
 
 $(document).ready(function() {
   var thermostat = new Thermostat();
-  updateTemperature();
-  $('#powersavingstatus').text(thermostat._powerSaving);
+  showThermometer();
+
+  $(function(){
+    $('#slider').change(function(){
+      thermostat._temperature = this.value;
+    });
+    $('#slider').change();
+  });
 
   $('#cityselect').change(function(){
     var city = $('#cityselect').val();
@@ -10,32 +16,25 @@ $(document).ready(function() {
     $.get(url, function(data) {
       $('#current').text(Math.round(data.main.temp - 273));
     });
-    $('#city').text(city);
+    $('#citydisplay').text(city);
   });
 
-  $('#increase').click(function() {
-    thermostat.increaseTemperature();
-    updateTemperature();
-  });
-
-  $('#decrease').click(function() {
-    thermostat.decreaseTemperature();
-    updateTemperature();
-  });
-
-  $('#reset').click(function() {
+  document.getElementById('reset').onclick = function() {
     thermostat.resetTemperature();
-    updateTemperature();
-  });
+    slider.value = thermostat._temperature;
+  };
 
-  $('#powersaving').click(function() {
+  document.getElementById('powersaving').onclick = function() {
     thermostat.switchPowerSaving();
-    $('#powersavingstatus').text(thermostat._powerSaving);
-  });
+  };
 
-  function updateTemperature() {
+  function showThermometer() {
     $('#temperature').text(thermostat._temperature);
+    $('#powersavingstatus').text(thermostat._powerSaving);
     $('#temperature').attr('class', thermostat.displayEfficiency());
   }
 
+  $(document).click(function(){
+    showThermometer();
+  });
 });

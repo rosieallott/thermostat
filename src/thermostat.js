@@ -2,14 +2,15 @@
 DEFAULT_TEMPERATURE = 20;
 
 var Thermostat = function Thermostat(){"use strict";
-this._temperature = DEFAULT_TEMPERATURE;
-this._minTemperature = 10;
-this._powerSaving = "ON";
-this._powerSaveMax = 25;
-this._maxTemperature = 32;
+  this._temperature = DEFAULT_TEMPERATURE;
+  this._minTemperature = 10;
+  this._powerSaving = "ON";
+  this._powerSaveMax = 25;
+  this._maxTemperature = 32;
 };
 
-Thermostat.prototype ={
+Thermostat.prototype = {
+
   showTemperature: function () {
     return this._temperature;
   },
@@ -19,41 +20,42 @@ Thermostat.prototype ={
     } else {
       return this._temperature += 1;
 
-    }},
-    decreaseTemperature: function () {
-      if (this._temperature <= this._minTemperature){
-        throw new Error("temperature cannot go below minimum.");
-      } else {
-        return this._temperature -= 1;
-      }},
-      resetTemperature: function() {
-        return this._temperature = DEFAULT_TEMPERATURE;
-      },
+    }
+  },
+  decreaseTemperature: function () {
+    if (this._temperature <= this._minTemperature){
+      throw new Error("temperature cannot go below minimum.");
+    } else {
+      return this._temperature -= 1;
+    }
+  },
+  resetTemperature: function() {
+    return this._temperature = DEFAULT_TEMPERATURE;
+  },
 
-      currentPower : function() {
-        if(this._powerSaving === "ON"){
-          return this._powerSaveMax;
-        } else {
-          return this._maxTemperature;
-        }},
+  currentPower : function() {
+    if(this._powerSaving === "ON"){
+      return this._powerSaveMax;
+    } else {
+      return this._maxTemperature;
+    }
+  },
 
-        switchPowerSaving: function(){
-          if (this._powerSaving === "ON") {
-            this._powerSaving = "OFF";
-          } else {
-            this._powerSaving = "ON";
-          }},
+  switchPowerSaving: function(){
+    if (this._powerSaving === "ON") {
+      return this._powerSaving = "OFF";
+    } else {
+      return this._powerSaving = "ON";
+    }
+  },
 
-          displayEfficiency : function() {
-            if(this._temperature < 18) {
-              return "Green";
-            }else if (this._temperature < 25) {
-              return "Yellow";
-            }else {
-              return "Red";
-            }}
-          };
-
-          function showValue(newValue) {
-            document.getElementById('rosie').innerHTML = newValue;
-          }
+  displayEfficiency : function() {
+    if(this._temperature < 18) {
+      return "Green";
+    } else if (this._temperature < 25) {
+      return "Yellow";
+    } else {
+      return "Red";
+    }
+  }
+};
